@@ -6,11 +6,14 @@ import bcrypt, { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { verifyToken } from "./middleware/auth.js";
 import cors from "cors"
+import dataArray from "./API/data.js";
 // const dotenv = dotenv;
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const router = express.Router();
+
 
 connectToDB();
 
@@ -80,6 +83,14 @@ app.post("/login", async (req, res) => {
 
 app.get('/dashboard', verifyToken,(req, res) =>{
     res.json({ message: "Welcome to your profile!", user: req.user });
+})
+
+router.get("/dashboard", verifyToken, (req, res)=>{
+  res.json({message: "Welcome to your profile ", user: req.user });
+});
+
+app.get("/secret-data", verifyToken, (req, res) => {
+  res.json({data : dataArray});
 })
 
 app.listen(port, () => {

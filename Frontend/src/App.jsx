@@ -6,6 +6,7 @@ import Home from "./Pages/Home"
 import {Routes, Route} from "react-router-dom"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import ProtectedRoute from "./helper/ProtectedRoute"
 function App() {
 
   return (
@@ -15,7 +16,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Welcome />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Welcome />} />
+        </Route>
         
       </Routes>
       <Footer />

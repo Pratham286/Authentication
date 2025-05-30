@@ -48,6 +48,14 @@ const Login = () => {
         );
         console.log("server response", response.data);
         if (response.status === 200) {
+          // if
+          const token = response.data.token;
+          if(token)
+          {
+            // console.log("Token : ",  token);
+            localStorage.setItem('token', token);
+            // console.log("token saved");
+          }
           navigate("/dashboard");
         }
       } catch (error) {
@@ -58,7 +66,6 @@ const Login = () => {
           alert("Email id is not registered");
         }
       }
-      // Handle actual login logic here
     }
   };
 
