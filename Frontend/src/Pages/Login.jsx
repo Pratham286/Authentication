@@ -43,7 +43,7 @@ const Login = () => {
       console.log("Login Successful:", formData);
       try {
         const response = await axios.post(
-          "http://localhost:3000/login",
+          "http://localhost:3000/auth/login",
           formData
         );
         console.log("server response", response.data);

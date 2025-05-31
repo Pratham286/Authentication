@@ -44,7 +44,7 @@ const Signup = () => {
     } else {
       console.log('Form Submitted:', formData);
       try {
-        const response = await axios.post("http://localhost:3000/register", formData);
+        const response = await axios.post("http://localhost:3000/auth/register", formData);
         console.log("server response", response.data);
         // console.log("server response", response.status);
         if(response.status === 201)

@@ -20,7 +20,7 @@ export default function Welcome() {
       const token = localStorage.getItem("token");
       const bearerToken = `Bearer ${token}`
       try {
-        const response = await axios.get("http://localhost:3000/secret-data", {
+        const response = await axios.get("http://localhost:3000/dashboard/secret-data", {
           headers: {
             Authorization: bearerToken,
           },
